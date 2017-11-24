@@ -3,11 +3,17 @@ module.exports = function(app, config) {
 
     'use strict';
 
-    var oauth2 = require('simple-oauth2')({
-        site: 'https://api.mendeley.com',
-        clientID: config.clientId,
-        clientSecret: config.clientSecret
-    });
+    const mendeleyCredentials = {
+      client: {
+        id: config.clientId,
+        secret: config.clientSecret
+      },
+      auth: {
+        tokenHost: 'https://api.mendeley.com'
+      }
+    };
+
+    var oauth2 = require('simple-oauth2').create(mendeleyCredentials);
 
     var cookieParser = require('cookie-parser');
     var sdk = require('../lib/api');
