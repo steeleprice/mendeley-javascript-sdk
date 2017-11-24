@@ -9,8 +9,8 @@
  */
 try {
     module.exports = {
-        clientId: null, // <-- Insert your client id
-        clientSecret: null, // <-- Insert your client secret here
+        clientId: null, // <-- Insert your client id (in quotes)
+        clientSecret: null, // <-- Insert your client secret here  (in quotes)
         responseType: 'code'
     };
 } catch(e) {
