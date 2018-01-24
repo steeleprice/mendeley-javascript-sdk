@@ -47,7 +47,8 @@ describe('utilities', function() {
                 headers: {
                     Accept: 'mime/type1',
                     'Content-Type': 'mime/type2'
-                }
+                },
+                timeout: 9001
             }, defaultOptions));
 
             requestFunction(requestParameters);
@@ -63,7 +64,8 @@ describe('utilities', function() {
                 params: requestParameters
             }, {
                 authFlow: authFlow,
-                maxRetries: 1
+                maxRetries: 1,
+                timeout: 9001
             });
         });
 
@@ -206,7 +208,8 @@ describe('utilities', function() {
                     Accept: 'mime/type1',
                     'Content-Type': 'mime/type2'
                 },
-                followLocation: true
+                followLocation: true,
+                timeout: 9001
             }, defaultOptions));
 
             requestFunction(requestData);
@@ -221,7 +224,8 @@ describe('utilities', function() {
                 data: requestData
             }, {
                 authFlow: authFlow,
-                followLocation: true
+                followLocation: true,
+                timeout: 9001
             });
         });
 
@@ -302,7 +306,8 @@ describe('utilities', function() {
         it('should create a request with given properties', function() {
             var requestFunction = utils.requestWithFileFun(assign({
                 method: 'POST',
-                resource: '/test'
+                resource: '/test',
+                timeout: 9001
             }, defaultOptions));
 
             requestFunction(file);
@@ -315,7 +320,8 @@ describe('utilities', function() {
                 onUploadProgress: undefined,
                 onDownloadProgress: undefined
             }, {
-                authFlow: authFlow
+                authFlow: authFlow,
+                timeout: 9001
             });
         });
 
