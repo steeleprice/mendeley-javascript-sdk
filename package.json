@@ -1,6 +1,6 @@
 {
   "name": "@mendeley/api",
-  "version": "8.5.0",
+  "version": "9.0.0",
   "description": "Mendeley API JavaScript SDK",
   "directories": {
     "example": "examples"
