@@ -42,9 +42,8 @@ describe('search api', function() {
                 expect(utilitiesMock.requestFun).toHaveBeenCalledWith(
                     jasmine.objectContaining({
                         method: 'GET',
-                        resource: '/search/profiles',
-                        headers: { 'Accept': MIME_TYPES.PROFILE },
-                        responseFilter: utilitiesMock.paginationFilter
+                        resource: '/search/v2/profiles',
+                        headers: { 'Accept': MIME_TYPES.PROFILES }
                     })
                 );
             });

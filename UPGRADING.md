@@ -189,3 +189,20 @@ https://github.com/mzabriskie/axios#global-axios-defaults
   // new
   var api = require('@mendeley/api').withPromise(require('bluebird'));
   ```
+
+## Upgrading to v9.x
+
+1. Changes the `search.profiles` method. Now the request doesn't accept a `paginationFilter` but `size` and `from` parameters. `size` parameter specifies how many results to return beginning from the `from` index value. For example a `from` value of `10` with `size` value of `20` will return 20 results beginning from index 10.
+
+2. The response for `search.profiles` now returns an object with the total and an array of results. For example:
+
+  ```javascript
+  // old
+  response = [{profile1}, {profile2}]
+  
+  // new
+  response = {
+    total: 23,
+    results: [{profile1}, {profile2}]
+  }
+  ```
