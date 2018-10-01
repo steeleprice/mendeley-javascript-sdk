@@ -349,6 +349,52 @@ describe('documents api', function() {
 
     });
 
+
+
+  describe('retrieve with files method', function() {
+
+    var ajaxRequest;
+
+    it('should be defined', function(done) {
+      expect(typeof documentsApi.retrieve).toBe('function');
+      var ajaxSpy = spyOn(axios, 'request').and.callFake(getMockPromises(mockPromiseRetrieve));
+      documentsApi.retrieveWithFiles(15).then(_finally, _finally);
+
+      function _finally() {
+        expect(ajaxSpy).toHaveBeenCalled();
+        ajaxRequest = ajaxSpy.calls.mostRecent().args[0];
+        done();
+      }
+    });
+
+    it('should use GET', function() {
+      expect(ajaxRequest.method).toBe('get');
+    });
+
+    it('should use endpoint /documents/{id}/', function() {
+      expect(ajaxRequest.url).toBe(baseUrl + '/documents/15');
+    });
+
+    it('should NOT have a Content-Type header', function() {
+      expect(ajaxRequest.headers['Content-Type']).not.toBeDefined();
+    });
+
+
+    it('should have an Accept header', function() {
+      expect(ajaxRequest.headers.Accept).toBe('application/vnd.mendeley-document-with-files-list+json');
+    });
+
+    it('should have an Authorization header', function() {
+      expect(ajaxRequest.headers.Authorization).toBeDefined();
+      expect(ajaxRequest.headers.Authorization).toBe('Bearer auth');
+    });
+
+    it('should NOT have a body', function() {
+      expect(ajaxRequest.data).toBeUndefined();
+    });
+
+  });
+
     describe('retrieve method failures', function() {
 
         it('should reject retrieve errors with the request and response', function(done) {
