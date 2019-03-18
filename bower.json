@@ -1,6 +1,6 @@
 {
   "name": "mendeley-javascript-sdk",
-  "version": "10.0.1",
+  "version": "10.0.2",
   "description": "Mendeley API JavaScript SDK",
   "repository": {
     "type": "git",
