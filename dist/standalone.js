@@ -2724,9 +2724,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    }
 
-	    // add default accept header
+	    // add default headers
 	    request.headers = assign({
-	        Accept: ''
+	        Accept: '',
+	        // these headers are needed to prevent IE 10/11 sometimes caching responses
+	        Pragma: 'no-cache',
+	        'Cache-Control': 'no-cache'
 	    }, request.headers);
 
 	    // add auth header
